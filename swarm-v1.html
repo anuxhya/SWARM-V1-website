@@ -483,33 +483,27 @@ a { color: inherit; text-decoration: none; }
 /* RFBs */
 .rfb-intro { font-size: 13px; color: var(--g200); line-height: 1.7; max-width: 480px; margin-bottom: 16px; }
 .rfb-intro strong { color: var(--white); font-weight: 500; }
+.rfb-intro a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
 .rfb-list { display: flex; flex-direction: column; }
 .rfb-item { border-top: 1px solid var(--g800); }
 .rfb-item:first-child { border-top: none; }
 
 .rfb-trigger {
-  width: 100%; background: none; border: none; cursor: pointer;
+  width: 100%; background: rgba(0,225,0,0.02); border: none; cursor: default;
   text-align: left; padding: 11px 0;
   display: flex; align-items: flex-start; gap: 12px;
-  font-family: var(--mono); transition: background 0.1s;
+  font-family: var(--mono);
 }
-.rfb-trigger:hover { background: rgba(255,255,255,0.015); }
-.rfb-item.open .rfb-trigger { background: rgba(0,225,0,0.02); }
 
-.rfb-n { font-size: 10px; color: var(--g700); min-width: 36px; padding-top: 2px; letter-spacing: 0.04em; }
-.rfb-item.open .rfb-n { color: var(--accent); }
+.rfb-n { font-size: 10px; color: var(--accent); min-width: 36px; padding-top: 2px; letter-spacing: 0.04em; }
 .rfb-trigger-main { flex: 1; }
 .rfb-t-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
 .rfb-t-sub { font-size: 11px; color: var(--g600); font-style: italic; }
-.rfb-icon { font-size: 14px; color: var(--g700); transition: transform 0.2s, color 0.1s; padding-top: 1px; }
-.rfb-item.open .rfb-icon { transform: rotate(45deg); color: var(--accent); }
 
-.rfb-body { display: none; padding: 0 0 14px 48px; }
-.rfb-item.open .rfb-body { display: block; }
+.rfb-body { display: block; padding: 0 0 20px 48px; }
 
-.rfb-problem { border-left: 2px solid var(--g800); padding: 8px 12px; margin-bottom: 12px; font-size: 12px; color: var(--g400); line-height: 1.7; }
-.rfb-item.open .rfb-problem { border-left-color: var(--accent); color: var(--g200); }
+.rfb-problem { border-left: 2px solid var(--accent); padding: 8px 12px; margin-bottom: 12px; font-size: 12px; color: var(--g200); line-height: 1.7; }
 
 .sub-lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--g600); margin-bottom: 5px; margin-top: 10px; }
 .sub-lbl:first-of-type { margin-top: 0; }
@@ -522,12 +516,22 @@ a { color: inherit; text-decoration: none; }
 .ql li { font-size: 12px; color: var(--g600); font-style: italic; display: flex; gap: 8px; line-height: 1.5; }
 .ql li::before { content: '?'; color: var(--accent); font-style: normal; flex-shrink: 0; font-size: 11px; }
 
-.tools-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
-.tool-tag { font-size: 11px; color: var(--g600); background: var(--g900); padding: 2px 8px; border-radius: 2px; border: 1px solid var(--g800); }
-
 .rfb-ex { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--g800); border-radius: 2px; }
 .rfb-ex-lbl { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; opacity: 0.6; }
 .rfb-ex p { font-size: 12px; color: var(--g400); line-height: 1.6; }
+
+/* Early Builder Examples */
+.example-list { display: flex; flex-direction: column; }
+.example-item { border-top: 1px solid var(--g800); padding: 16px 0; }
+.example-item:first-child { border-top: none; padding-top: 0; }
+.example-header { display: flex; gap: 12px; margin-bottom: 8px; align-items: flex-start; }
+.example-n { font-size: 10px; color: var(--accent); min-width: 36px; padding-top: 2px; letter-spacing: 0.04em; flex-shrink: 0; }
+.example-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 3px; line-height: 1.4; }
+.example-attr { font-size: 11px; color: var(--g600); letter-spacing: 0.03em; }
+.example-body { padding-left: 48px; }
+.example-desc { font-size: 12px; color: var(--g400); line-height: 1.75; margin-bottom: 8px; }
+.example-link { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--g600); letter-spacing: 0.04em; transition: color 0.1s; text-decoration: none; }
+.example-link:hover { color: var(--accent); }
 
 /* Judging */
 .j-row { display: flex; gap: 16px; padding: 12px 0; border-top: 1px solid var(--g800); align-items: flex-start; }
@@ -564,6 +568,49 @@ a { color: inherit; text-decoration: none; }
 .cta-title { font-size: clamp(28px, 4vw, 42px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; color: var(--white); margin-bottom: 10px; }
 .cta-sub { font-size: 13px; color: var(--g400); line-height: 1.7; max-width: 380px; margin-bottom: 22px; }
 .cta-fine { margin-top: 12px; font-size: 11px; color: var(--g700); letter-spacing: 0.04em; }
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  padding: var(--pad);
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--g900);
+  border: 1px solid var(--g700);
+  border-radius: 2px;
+  padding: 32px;
+  max-width: 380px;
+  width: 100%;
+  position: relative;
+}
+.modal-close {
+  position: absolute; top: 14px; right: 16px;
+  background: none; border: none; cursor: pointer;
+  font-size: 20px; color: var(--g600);
+  font-family: var(--mono); line-height: 1;
+  transition: color 0.1s; padding: 0;
+}
+.modal-close:hover { color: var(--white); }
+.modal-lbl { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.modal-title { font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: -0.02em; margin-bottom: 8px; }
+.modal-desc { font-size: 12px; color: var(--g400); line-height: 1.7; margin-bottom: 20px; }
+.modal-pass {
+  border: 1px solid var(--g800); border-radius: 2px;
+  padding: 12px 16px; margin-bottom: 20px;
+  background: var(--black);
+}
+.modal-pass-lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--g600); margin-bottom: 5px; }
+.modal-pass-val { font-size: 22px; font-weight: 600; color: var(--accent); letter-spacing: 0.06em; }
+.modal-cta { display: block; text-align: center; }
 
 /* Footer */
 .footer {
@@ -612,7 +659,7 @@ a { color: inherit; text-decoration: none; }
       <a href="#judging">Judging</a>
       <a href="#resources">Resources</a>
     </div>
-    <a href="#apply" class="nav-apply">Apply</a>
+    <a href="#" class="nav-apply" onclick="openApplyModal(event)">Apply</a>
   </div>
 </nav>
 
@@ -636,9 +683,8 @@ a { color: inherit; text-decoration: none; }
       </p>
       <p class="hero-selected">Selected builders only.</p>
       <div class="hero-ctas">
-        <a href="#apply" class="btn-primary">Request access →</a>
-        <a href="#prizes" class="btn-outline">See what's included</a>
-        <a href="#ideas" class="btn-outline">Problem space</a>
+        <a href="#" class="btn-primary" onclick="openApplyModal(event)">Request access →</a>
+        <a href="https://discord.gg/NDgvUzFqBY" target="_blank" class="btn-outline">Join Discord ↗</a>
       </div>
     </div>
 
@@ -649,11 +695,11 @@ a { color: inherit; text-decoration: none; }
       <div class="meta-grid">
         <div class="meta-cell">
           <div class="meta-key">Prize pool</div>
-          <div class="meta-val green">$275K</div>
+          <div class="meta-val green">$25K</div>
         </div>
         <div class="meta-cell">
           <div class="meta-key">Dates</div>
-          <div class="meta-val">Apr 13 – May 11</div>
+          <div class="meta-val">Apr 6 – May 11</div>
         </div>
         <div class="meta-cell">
           <div class="meta-key">Format</div>
@@ -665,16 +711,7 @@ a { color: inherit; text-decoration: none; }
         </div>
       </div>
 
-      <!-- Terminal log -->
-      <div class="term-block">
-        <div class="term-header">
-          <span class="term-title">// agent_network.log</span>
-          <span class="term-live"><span class="term-live-dot"></span>live</span>
-        </div>
-        <div class="term-log" id="term-log"></div>
-      </div>
-
-      <div class="canteen-card">
+<div class="canteen-card">
         <div class="canteen-header">
           <div class="canteen-mark">C</div>
           <div>
@@ -697,7 +734,7 @@ a { color: inherit; text-decoration: none; }
     <div class="hero-bottom-left">
       <span style="color:var(--accent);font-size:10px;letter-spacing:0.1em;">● LIVE</span>
       <span>Colosseum Frontier Hackathon</span>
-      <span style="color:var(--g700)">Apr 13 – May 11, 2026</span>
+      <span style="color:var(--g700)">Apr 6 – May 11, 2026</span>
     </div>
     <div class="hero-bottom-right">
       <a href="#prizes">Prizes</a>
@@ -719,7 +756,7 @@ a { color: inherit; text-decoration: none; }
     <span class="ticker-item">Emergent Agent Economies</span>
     <span class="ticker-item">Multi-Agent Orchestration</span>
     <span class="ticker-item accent">$25,000 in prizes</span>
-    <span class="ticker-item">Apr 13 – May 11 · Online</span>
+    <span class="ticker-item">Apr 6 – May 11 · Online</span>
     <span class="ticker-item">Canteen × Colosseum Frontier</span>
     <span class="ticker-item accent">Invite only</span>
     <span class="ticker-item">SWARM</span>
@@ -729,7 +766,7 @@ a { color: inherit; text-decoration: none; }
     <span class="ticker-item">Emergent Agent Economies</span>
     <span class="ticker-item">Multi-Agent Orchestration</span>
     <span class="ticker-item accent">$25,000 in prizes</span>
-    <span class="ticker-item">Apr 13 – May 11 · Online</span>
+    <span class="ticker-item">Apr 6 – May 11 · Online</span>
     <span class="ticker-item">Canteen × Colosseum Frontier</span>
     <span class="ticker-item accent">Invite only</span>
   </div>
@@ -743,21 +780,21 @@ a { color: inherit; text-decoration: none; }
   </div>
   <div class="sec-body">
     <div class="prize-row">
-      <div class="prize-num">$275K</div>
-      <div class="prize-lbl">in prizes</div>
+      <div class="prize-num">$250k</div>
+      <div class="prize-lbl">in follow-on support from Colosseum's venture fund</div>
     </div>
     <p class="prize-desc">
-      Awarded to standout SWARM projects at the end of the four weeks.
-      These prizes are on top of everything Colosseum's Frontier already offers.
+      These investments are offered by Colosseum's Frontier and in addition to SWARM.
       The best projects compete for both.
     </p>
     <div class="perk-list">
-      <div class="perk-row">
-        <div class="perk-n">01</div>
+	    <div class="perk-row">
+	<div class="perk-n">01</div>
         <div>
-          <div class="perk-title">$275,000 in prizes</div>
+          <div class="perk-title">$25,000 in prizes</div>
           <div class="perk-desc-t">Awarded to standout SWARM projects, stacked on top of everything Frontier already offers.</div>
         </div>
+	    </div>
       </div>
       <div class="perk-row">
         <div class="perk-n">02</div>
@@ -815,18 +852,16 @@ a { color: inherit; text-decoration: none; }
     <div class="sec-label-num">03</div>
   </div>
   <div class="sec-body">
-    <p class="rfb-intro">Five open problems in the agent economy. Pick the one that keeps you up at night and build the thing that solves it. <strong>The best submissions always start from a specific frustration.</strong></p>
+    <p class="rfb-intro">RFBs — "Requests for Builders" — are our version of <a href="https://www.ycombinator.com/rfs" target="_blank">YC's Requests for Startups</a>. Five open problems in the agent economy that we think are worth solving. If one excites you, treat it as extra validation to dive in — but you don't need to work on any of these to participate in SWARM. <strong>The best submissions always start from a specific frustration.</strong></p>
     <div class="rfb-list">
-
       <div class="rfb-item" id="rfb-1">
-        <button class="rfb-trigger" onclick="toggleRFB('rfb-1')">
+        <div class="rfb-trigger">
           <div class="rfb-n">RFB 01</div>
           <div class="rfb-trigger-main">
             <div class="rfb-t-title">Agent Discovery &amp; Reputation Networks</div>
             <div class="rfb-t-sub">Your agent offers a service. How do other agents find it and decide to trust it?</div>
           </div>
-          <div class="rfb-icon">+</div>
-        </button>
+        </div>
         <div class="rfb-body">
           <div class="rfb-problem">Your AI agent offers a service — trading signals, design work, analysis. How do other agents find you and decide to trust you?</div>
           <div class="sub-lbl">What builders create</div>
@@ -840,11 +875,9 @@ a { color: inherit; text-decoration: none; }
           <ul class="ql">
             <li>Do agents form cliques and networks like humans?</li>
             <li>Can agent reputation be gamed? How do you prevent Sybil attacks?</li>
-            <li>Do specialized agent networks emerge organically?</li>
+            <li>Do specialized agent networks emerge — trading agents only talk to trading agents?</li>
           </ul>
-          <div class="sub-lbl">Solana tools</div>
-          <div class="tools-row"><span class="tool-tag">Light Protocol</span></div>
-          <div class="rfb-ex"><div class="rfb-ex-lbl">Example</div><p>"AgentGraph" — Yelp for AI agents. Agents build profiles, others review them, and on-chain payment history serves as the reputation signal.</p></div>
+          <div class="rfb-ex"><div class="rfb-ex-lbl">Example</div><p>"AgentGraph" — Yelp for AI agents. Agents build profiles, other agents review them, and on-chain payment history serves as the reputation signal.</p></div>
           <div class="sub-lbl">Traction metrics</div>
           <ul class="bl">
             <li>Number of agents and agent startups using your product for discovery and reputation</li>
@@ -857,16 +890,15 @@ a { color: inherit; text-decoration: none; }
       </div>
 
       <div class="rfb-item" id="rfb-2">
-        <button class="rfb-trigger" onclick="toggleRFB('rfb-2')">
+        <div class="rfb-trigger">
           <div class="rfb-n">RFB 02</div>
           <div class="rfb-trigger-main">
             <div class="rfb-t-title">Real-Time Agent Coordination</div>
             <div class="rfb-t-sub">Multiple agents need to coordinate in real-time. Voice calls. Live auctions. Streaming services.</div>
           </div>
-          <div class="rfb-icon">+</div>
-        </button>
+        </div>
         <div class="rfb-body">
-          <div class="rfb-problem">Multiple agents need to coordinate in real-time. Voice agents negotiating, live auctions, streaming services. Solana's 400ms blocks make this possible. Build the interfaces.</div>
+          <div class="rfb-problem">Multiple agents need to coordinate in real-time — voice agents negotiating, live auctions, streaming services. Solana's 400ms blocks make this possible. Build the interfaces.</div>
           <div class="sub-lbl">What builders create</div>
           <ul class="bl">
             <li>Voice agents that negotiate deals with other voice agents</li>
@@ -874,27 +906,30 @@ a { color: inherit; text-decoration: none; }
             <li>Streaming payment systems — pay-per-second for agent services</li>
             <li>Real-time collaboration tools where agents work together and split payment dynamically</li>
           </ul>
-          <div class="sub-lbl">Questions worth exploring</div>
+          <div class="sub-lbl">Real-time use cases</div>
           <ul class="ql">
             <li>Shopping agent calls a merchant agent, negotiates bulk discount in real-time</li>
             <li>Live compute marketplace: AI needs GPU now, agents bid using instant finality</li>
-            <li>Streaming analysis: agent provides live commentary, paid per second</li>
+            <li>Streaming analysis: agent provides live market commentary, paid per second</li>
+            <li>Multi-agent brainstorming: several agents collaborate, payment splits dynamically</li>
           </ul>
-          <div class="sub-lbl">Solana tools</div>
-          <div class="tools-row"><span class="tool-tag">x402-solana · PayAI</span><span class="tool-tag">Clockwork</span></div>
-          <div class="rfb-ex"><div class="rfb-ex-lbl">Example</div><p>"AgentCall" — Voice agents that negotiate with each other. Real-time deal making using Solana's instant finality.</p></div>
+          <div class="rfb-ex"><div class="rfb-ex-lbl">Example</div><p>"AgentCall" — Voice agents that negotiate with each other. Shopping agent calls merchant agent, negotiates bulk discount in real-time using Solana's instant finality.</p></div>
+          <div class="sub-lbl">Traction metrics</div>
+          <ul class="bl">
+            <li>Number of agents and agent startups using your product for coordination</li>
+            <li>Number of real-time agent interactions</li>
+          </ul>
         </div>
       </div>
 
       <div class="rfb-item" id="rfb-3">
-        <button class="rfb-trigger" onclick="toggleRFB('rfb-3')">
+        <div class="rfb-trigger">
           <div class="rfb-n">RFB 03</div>
           <div class="rfb-trigger-main">
             <div class="rfb-t-title">Agent Attention Markets</div>
             <div class="rfb-t-sub">You're selling to agents. Traditional marketing doesn't work on AI. What does?</div>
           </div>
-          <div class="rfb-icon">+</div>
-        </button>
+        </div>
         <div class="rfb-body">
           <div class="rfb-problem">You are a startup selling to agents. How do you get their attention? Traditional marketing does not work on AI. This is a completely unsolved problem.</div>
           <div class="sub-lbl">What builders create</div>
@@ -908,23 +943,27 @@ a { color: inherit; text-decoration: none; }
           <ul class="ql">
             <li>Do agents develop brands like humans?</li>
             <li>Will there be agent influencers that other agents follow?</li>
+            <li>Can you A/B test messaging on agents?</li>
             <li>What is the ROI of agent-to-agent marketing?</li>
           </ul>
-          <div class="sub-lbl">Solana tools</div>
-          <div class="tools-row"><span class="tool-tag">x402-solana · PayAI</span></div>
           <div class="rfb-ex"><div class="rfb-ex-lbl">Example</div><p>"AgentAds" — Google Ads but for AI agents. Providers bid for placement when agents search for services. Solana's low fees enable $0.001 attention bids.</p></div>
+          <div class="sub-lbl">Traction metrics</div>
+          <ul class="bl">
+            <li>How many advertisers can you onboard?</li>
+            <li>How many ads can you create, and how effective are they — how many agents convert?</li>
+            <li>Cost per agent acquisition</li>
+          </ul>
         </div>
       </div>
 
       <div class="rfb-item" id="rfb-4">
-        <button class="rfb-trigger" onclick="toggleRFB('rfb-4')">
+        <div class="rfb-trigger">
           <div class="rfb-n">RFB 04</div>
           <div class="rfb-trigger-main">
             <div class="rfb-t-title">Emergent Agent Economies</div>
             <div class="rfb-t-sub">What actually happens when hundreds of agents with different goals interact?</div>
           </div>
-          <div class="rfb-icon">+</div>
-        </button>
+        </div>
         <div class="rfb-body">
           <div class="rfb-problem">What happens when hundreds of agents with different goals interact on the same network? Can we observe emergent behaviors, and build tools to study them?</div>
           <div class="sub-lbl">What builders create</div>
@@ -937,24 +976,28 @@ a { color: inherit; text-decoration: none; }
           <div class="sub-lbl">Research questions</div>
           <ul class="ql">
             <li>Do agent economies develop specialization and division of labor?</li>
+            <li>Can you predict agent behavior from network structure?</li>
             <li>Do agents form cartels or monopolies?</li>
+            <li>What economic structures emerge naturally?</li>
             <li>How do agent economies differ from human economies?</li>
           </ul>
-          <div class="sub-lbl">Solana tools</div>
-          <div class="tools-row"><span class="tool-tag">Carbon / Helius</span><span class="tool-tag">Yellowstone gRPC</span></div>
-          <div class="rfb-ex"><div class="rfb-ex-lbl">Example</div><p>"AgentWorld" — 100 AI agents with different goals on Solana. Researchers observe what economic structures emerge using real SOL/USDC with safety limits.</p></div>
+          <div class="rfb-ex"><div class="rfb-ex-lbl">Example</div><p>"AgentWorld" — Simulation environment where 100 AI agents with different goals interact on Solana. Researchers observe what economic structures emerge using real SOL/USDC with safety limits.</p></div>
+          <div class="sub-lbl">Traction metrics</div>
+          <ul class="bl">
+            <li>Number of frontier labs interested in using your simulation environment to explore emergent agent dynamics</li>
+            <li>If you built evals with emergent agents, how many LOIs can you get from labs?</li>
+          </ul>
         </div>
       </div>
 
       <div class="rfb-item" id="rfb-5">
-        <button class="rfb-trigger" onclick="toggleRFB('rfb-5')">
+        <div class="rfb-trigger">
           <div class="rfb-n">RFB 05</div>
           <div class="rfb-trigger-main">
             <div class="rfb-t-title">Multi-Agent Orchestration</div>
             <div class="rfb-t-sub">Complex tasks need multiple agents working together. Who coordinates, and who gets paid?</div>
           </div>
-          <div class="rfb-icon">+</div>
-        </button>
+        </div>
         <div class="rfb-body">
           <div class="rfb-problem">Complex tasks require multiple agents working together in real-time. How do they coordinate, communicate, and split payment fairly?</div>
           <div class="sub-lbl">What builders create</div>
@@ -968,11 +1011,100 @@ a { color: inherit; text-decoration: none; }
           <ul class="ql">
             <li>Research: coordinator agent recruits researcher, writer, and editor agents</li>
             <li>Complex analysis: data, modeling, and visualization agents collaborate</li>
-            <li>Live coverage: multiple agents streaming different angles, paid by contribution</li>
+            <li>Content production: idea agent, writer agent, editor agent, and designer agent in sequence</li>
+            <li>Live event coverage: multiple agents streaming different angles, paid by contribution</li>
           </ul>
-          <div class="sub-lbl">Solana tools</div>
-          <div class="tools-row"><span class="tool-tag">x402-solana · PayAI</span><span class="tool-tag">Solana Agent Kit</span></div>
-          <div class="rfb-ex"><div class="rfb-ex-lbl">Example</div><p>"SwarmOS" — Submit a complex task, agents self-assemble using a Solana marketplace, complete the work, and auto-split payment on-chain.</p></div>
+          <div class="rfb-ex"><div class="rfb-ex-lbl">Example</div><p>"SwarmOS" — Operating system for agent coordination. Submit a complex task, agents self-assemble into a team using a Solana marketplace, complete the work, and auto-split payment based on contribution tracked on-chain.</p></div>
+          <div class="sub-lbl">Traction metrics</div>
+          <ul class="bl">
+            <li>If you built evals with agent orchestration, how many LOIs can you get from labs?</li>
+            <li>Number of agent runtimes using your orchestration workflow</li>
+            <li>Number of users for your research, content production, or complex analysis tool</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EARLY BUILDER EXAMPLES -->
+<div class="section" id="examples">
+  <div class="sec-label">
+    <div class="sec-label-text">Early<br>Builder<br>Examples</div>
+    <div class="sec-label-num">04</div>
+  </div>
+  <div class="sec-body">
+    <p class="rfb-intro">Research that points directly to buildable products. Starting points, not prescriptions.</p>
+    <div class="example-list">
+
+      <div class="example-item">
+        <div class="example-header">
+          <div class="example-n">01</div>
+          <div>
+            <div class="example-title">Debate Primitives for Multi-Agent LLM Collaboration</div>
+            <div class="example-attr">Li et al., 2025 · UW-Madison</div>
+          </div>
+        </div>
+        <div class="example-body">
+          <p class="example-desc">Li's work gives us a concrete design question: when should a swarm deliberate vs. aggregate? The hack here is building that decision as an on-chain primitive — the mechanism selector (debate or vote) lives in a smart contract, debate transcripts are hashed and stored as receipts, and payment releases only after the chosen mechanism reaches quorum. This turns a research finding into auditable, trust-minimized coordination infrastructure. The interesting product wedge is selling it to agent runtime providers (e.g. LangGraph, CrewAI) as a drop-in arbitration layer.</p>
+          <a href="https://github.com/deeplearning-wisc/debate-or-vote" target="_blank" class="example-link">Research repo ↗</a>
+        </div>
+      </div>
+
+      <div class="example-item">
+        <div class="example-header">
+          <div class="example-n">02</div>
+          <div>
+            <div class="example-title">TurboQuant KV Cache as Agent Memory</div>
+            <div class="example-attr">Zandieh &amp; Mirrokni · Google Research · 2026</div>
+          </div>
+        </div>
+        <div class="example-body">
+          <p class="example-desc">Extreme KV cache compression may enable agent memory to be stored onchain for the first time. This would give agents verifiable, persistent memory that survives across sessions and providers — no single inference provider controls the memory state. The hack is a PoC that snapshots a compressed KV cache (using TurboQuant's technique) at the end of each agent session, pins it to Arweave/Filecoin with a hash on Solana, and rehydrates it at session start. If retrieval quality holds up at extreme compression ratios, this is the missing piece for truly persistent agent identity.</p>
+          <a href="https://arxiv.org/abs/2504.19874" target="_blank" class="example-link">Research paper ↗</a>
+        </div>
+      </div>
+
+      <div class="example-item">
+        <div class="example-header">
+          <div class="example-n">03</div>
+          <div>
+            <div class="example-title">Craftium On-Chain via Rust Game Engine</div>
+            <div class="example-attr">Mikelma et al. · ICML 2025</div>
+          </div>
+        </div>
+        <div class="example-body">
+          <p class="example-desc">Craftium provides a Minecraft-based framework for building diverse multi-agent environments in a composable way. Can we rewrite the environment core in a Rust-based game engine (Bevy is the obvious choice given its ECS architecture and WASM compilation target)? This creates a permissionless arena for agent training and evaluation.</p>
+          <a href="https://github.com/mikelma/craftium" target="_blank" class="example-link">Research repo ↗</a>
+        </div>
+      </div>
+
+      <div class="example-item">
+        <div class="example-header">
+          <div class="example-n">04</div>
+          <div>
+            <div class="example-title">MiroFish as a Prediction Market Oracle</div>
+            <div class="example-attr">OASIS + Manifold/Polymarket</div>
+          </div>
+        </div>
+        <div class="example-body">
+          <p class="example-desc">OASIS simulates one million agents reacting to a seed event. MiroFish wraps this into a structured report. The gap: there's no way to bet on whether the simulation is right. The hack is to wire MiroFish's output — e.g. "68% of simulated agents react negatively to this policy in 72 hours" — into a prediction market where the resolution criterion is measured real-world sentiment (X API, Farcaster, Reddit). The simulation run is committed on-chain before the real-world event unfolds, making it tamper-evident. The interesting research question OASIS itself raises: at what agent-count threshold does the simulation's predicted sentiment distribution start matching real observed distributions? You'd have ground truth data to actually answer this.</p>
+          <a href="https://github.com/camel-ai/oasis" target="_blank" class="example-link">Research repo ↗</a>
+        </div>
+      </div>
+
+      <div class="example-item">
+        <div class="example-header">
+          <div class="example-n">05</div>
+          <div>
+            <div class="example-title">zkVM Verifiable Simulation Replays via MiroFish Architecture</div>
+            <div class="example-attr">MiroFish</div>
+          </div>
+        </div>
+        <div class="example-body">
+          <p class="example-desc">MiroFish runs "dual-platform parallel" simulations — agents act across two synthetic social platforms simultaneously. This is a natural structure for zkVM-verifiable replays: run the simulation once, generate a proof that the reported emergent behaviors follow deterministically from the initial graph state and the model weights used. Builders could then ship simulation results to clients who verify the proof without re-running the full simulation. The practical bottleneck is that LLM inference isn't cheaply provable today — but MiroFish-Offline's Ollama backend with a quantized local model (qwen2.5 at 4-bit) is small enough that zkML proof generation becomes at least tractable for short simulation windows.</p>
+          <a href="https://github.com/666ghj/MiroFish" target="_blank" class="example-link">Research repo ↗</a>
         </div>
       </div>
 
@@ -984,7 +1116,7 @@ a { color: inherit; text-decoration: none; }
 <div class="section" id="judging">
   <div class="sec-label">
     <div class="sec-label-text">How we<br>judge</div>
-    <div class="sec-label-num">04</div>
+    <div class="sec-label-num">05</div>
   </div>
   <div class="sec-body">
     <div class="j-row">
@@ -1020,7 +1152,7 @@ a { color: inherit; text-decoration: none; }
 <div class="section" id="resources">
   <div class="sec-label">
     <div class="sec-label-text">The<br>Stack</div>
-    <div class="sec-label-num">05</div>
+    <div class="sec-label-num">06</div>
   </div>
   <div class="sec-body">
     <div class="res-grid">
@@ -1039,23 +1171,18 @@ a { color: inherit; text-decoration: none; }
           <a href="https://github.com/solana-foundation/anchor" target="_blank" class="res-link"><span class="res-link-name">Anchor Framework</span><span class="res-link-desc">Smart contracts</span><span class="res-link-arr">↗</span></a>
           <a href="https://helius.dev/" target="_blank" class="res-link"><span class="res-link-name">Helius</span><span class="res-link-desc">RPC + data</span><span class="res-link-arr">↗</span></a>
           <a href="https://pyth.network/" target="_blank" class="res-link"><span class="res-link-name">Pyth Network</span><span class="res-link-desc">Oracle data</span><span class="res-link-arr">↗</span></a>
-          <a href="https://jup.ag/" target="_blank" class="res-link"><span class="res-link-name">Jupiter</span><span class="res-link-desc">DEX aggregator</span><span class="res-link-arr">↗</span></a>
+          <a href="https://jup.ag/" target="_blank" class="res-link"><span class="res-link-name">Jupiter</span><span class="res-link-desc">Solana DeFi</span><span class="res-link-arr">↗</span></a>
+          <a href="https://github.com/rpcpool/yellowstone-grpc" target="_blank" class="res-link"><span class="res-link-name">Yellowstone gRPC</span><span class="res-link-desc">Real-time network data</span><span class="res-link-arr">↗</span></a>
+          <a href="https://lightprotocol.com/" target="_blank" class="res-link"><span class="res-link-name">Light Protocol</span><span class="res-link-desc">ZK compression</span><span class="res-link-arr">↗</span></a>
+          <a href="https://github.com/sevenlabs-hq/carbon" target="_blank" class="res-link"><span class="res-link-name">Carbon</span><span class="res-link-desc">Indexing framework</span><span class="res-link-arr">↗</span></a>
+          <a href="https://github.com/helium/tuktuk" target="_blank" class="res-link"><span class="res-link-name">Tukuk</span><span class="res-link-desc">Automated task triggers</span><span class="res-link-arr">↗</span></a>
         </div>
       </div>
       <div>
-        <div class="res-group-title">Canteen Research</div>
+        <div class="res-group-title">Reading</div>
         <div class="res-links">
-          <a href="https://thecanteenapp.com/" target="_blank" class="res-link"><span class="res-link-name">AI Agent Landscape 2026</span><span class="res-link-desc">Jan 2026</span><span class="res-link-arr">↗</span></a>
-          <a href="https://thecanteenapp.com/" target="_blank" class="res-link"><span class="res-link-name">Introducing x402 v2</span><span class="res-link-desc">Dec 2025</span><span class="res-link-arr">↗</span></a>
-          <a href="https://thecanteenapp.com/" target="_blank" class="res-link"><span class="res-link-name">Tempo: Initial Thoughts</span><span class="res-link-desc">Dec 2025</span><span class="res-link-arr">↗</span></a>
-        </div>
-      </div>
-      <div>
-        <div class="res-group-title">Docs</div>
-        <div class="res-links">
-          <a href="https://solanacookbook.com/" target="_blank" class="res-link"><span class="res-link-name">Solana Cookbook</span><span class="res-link-desc">Patterns</span><span class="res-link-arr">↗</span></a>
-          <a href="https://book.anchor-lang.com/" target="_blank" class="res-link"><span class="res-link-name">Anchor Book</span><span class="res-link-desc">Reference</span><span class="res-link-arr">↗</span></a>
-          <a href="https://github.com/solana-developers/program-examples" target="_blank" class="res-link"><span class="res-link-name">Program Examples</span><span class="res-link-desc">Starter code</span><span class="res-link-arr">↗</span></a>
+          <a href="https://thecanteenapp.com/analysis/2026/03/27/multi-agent-landscape.html" target="_blank" class="res-link"><span class="res-link-name">Multi-Agent Landscape 2026</span><span class="res-link-desc">Mar 2026</span><span class="res-link-arr">↗</span></a>
+          <a href="https://thecanteenapp.com/analysis/2026/01/06/ai-agent-landscape.html" target="_blank" class="res-link"><span class="res-link-name">AI Agent Landscape 2026</span><span class="res-link-desc">Jan 2026</span><span class="res-link-arr">↗</span></a>
         </div>
       </div>
     </div>
@@ -1067,8 +1194,8 @@ a { color: inherit; text-decoration: none; }
   <div class="cta-lbl">Request access</div>
   <h2 class="cta-title">Your priority pass<br>to the arena.</h2>
   <p class="cta-sub">SWARM is selected by invitation. Tell us what you are building and why the agent economy needs it.</p>
-  <a href="#" class="btn-primary">Apply on Luma →</a>
-  <div class="cta-fine">Apr 13 – May 11, 2026 · Online · In partnership with Colosseum</div>
+  <a href="#" class="btn-primary" onclick="openApplyModal(event)">Apply on Luma →</a>
+  <div class="cta-fine">Apr 6 – May 11, 2026 · Online · In partnership with Colosseum</div>
 </div>
 
 <!-- FOOTER -->
@@ -1104,8 +1231,8 @@ a { color: inherit; text-decoration: none; }
 
   // Character sets by intensity tier
   const T0 = [' ',' ',' ',' ',' ',' ',' ','·'];            // idle background
-  const T1 = ['·','.',',','`',''','-','_'];                // low
-  const T2 = ['+','~','=','x','o','s','i','l','|','/','\'];// mid
+  const T1 = ['·','.',',','`','\u2019','-','_'];            // low
+  const T2 = ['+','~','=','x','o','s','i','l','|','/','\\'];// mid
   const T3 = ['#','%','@','&','W','M','H','X','Z','8','$']; // high
   const TX  = ['█','▓','▒','░','◆','◇','●','■'];           // transaction burst
 
@@ -1472,14 +1599,38 @@ a { color: inherit; text-decoration: none; }
   for (let i=0;i<4;i++) spawnAgent();
   draw();
 })();
-
-/* RFB accordion */
-function toggleRFB(id) {
-  const item = document.getElementById(id);
-  const open = item.classList.contains('open');
-  document.querySelectorAll('.rfb-item').forEach(el=>el.classList.remove('open'));
-  if (!open) item.classList.add('open');
-}
 </script>
+
+<script>
+/* Apply modal */
+function openApplyModal(e) {
+  e.preventDefault();
+  document.getElementById('apply-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeApplyModal() {
+  document.getElementById('apply-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeApplyModal();
+});
+</script>
+
+<!-- APPLY MODAL -->
+<div id="apply-modal" class="modal-overlay" onclick="if(event.target===this)closeApplyModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeApplyModal()">×</button>
+    <div class="modal-lbl">Priority Access</div>
+    <h3 class="modal-title">Register for SWARM</h3>
+    <p class="modal-desc">Enter the passphrase below when registering on Luma to unlock your SWARM priority access.</p>
+    <div class="modal-pass">
+      <div class="modal-pass-lbl">Passphrase</div>
+      <div class="modal-pass-val">SITEx4249</div>
+    </div>
+    <a href="https://luma.com/6229drs5" target="_blank" class="btn-primary modal-cta">Register on Luma →</a>
+  </div>
+</div>
+
 </body>
 </html>
