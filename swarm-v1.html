@@ -270,11 +270,10 @@ a { color: inherit; text-decoration: none; }
   padding-bottom: 10px; border-bottom: 1px solid var(--g800);
 }
 .canteen-mark {
-  width: 28px; height: 28px; background: #5b21b6;
-  border-radius: 5px; display: flex; align-items: center;
-  justify-content: center; font-size: 12px; font-weight: 700;
-  color: white; flex-shrink: 0;
+  width: 36px; height: 36px;
+  border-radius: 5px; overflow: hidden; flex-shrink: 0;
 }
+.canteen-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .canteen-name { font-size: 12px; font-weight: 600; color: var(--white); }
 .canteen-sub  { font-size: 10px; color: var(--g600); letter-spacing: 0.05em; margin-top: 1px; }
 .canteen-desc { font-size: 12px; color: var(--g100); line-height: 1.7; }
@@ -354,36 +353,6 @@ a { color: inherit; text-decoration: none; }
 .term-spawn { color: var(--g400); }
 .term-tx    { color: var(--accent); opacity: 0.75; }
 
-/* HERO BOTTOM — status bar */
-.hero-bottom {
-  position: relative; z-index: 2;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 var(--pad);
-  height: 40px;
-  border-top: 1px solid var(--g800);
-  font-size: 11px; color: var(--g600);
-  max-width: 100%;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(8px);
-}
-.hero-bottom-left { display: flex; align-items: center; gap: 20px; }
-.hero-bottom-right { display: flex; align-items: center; gap: 16px; }
-.hero-bottom-right a {
-  color: var(--g600); transition: color 0.1s;
-  font-size: 11px; letter-spacing: 0.04em;
-}
-.hero-bottom-right a:hover { color: var(--white); }
-
-/* Animated scroll hint */
-.scroll-hint {
-  display: flex; align-items: center; gap: 6px;
-  color: var(--g600); font-size: 11px;
-  animation: bounce 2s ease-in-out 2s infinite;
-}
-@keyframes bounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(3px); }
-}
 
 /* ======================================================
    GLITCH TEXT EFFECT (on SWARM hover)
@@ -400,36 +369,12 @@ a { color: inherit; text-decoration: none; }
   100% { transform: translateX(0); }
 }
 
-/* ======================================================
-   TYPEWRITER ticker
-   ====================================================== */
-.ticker-bar {
-  background: var(--g900);
-  border-bottom: 1px solid var(--g800);
-  padding: 8px var(--pad);
-  overflow: hidden;
-  position: relative;
-}
-.ticker-inner {
-  display: flex; gap: 0;
-  animation: ticker 30s linear infinite;
-  width: max-content;
-}
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.ticker-item {
-  font-size: 11px; color: var(--g600);
-  padding: 0 28px; white-space: nowrap; letter-spacing: 0.06em;
-}
-.ticker-item::after { content: '·'; margin-left: 28px; color: var(--g800); }
-.ticker-item.accent { color: var(--accent); opacity: 0.7; }
 
 /* ======================================================
    DETAIL SECTIONS
    ====================================================== */
 .section {
+  scroll-margin-top: 52px;
   border-top: 1px solid var(--g800);
   max-width: var(--max);
   margin: 0 auto;
@@ -503,8 +448,6 @@ a { color: inherit; text-decoration: none; }
 
 .rfb-body { display: block; padding: 0 0 20px 48px; }
 
-.rfb-problem { border-left: 2px solid var(--accent); padding: 8px 12px; margin-bottom: 12px; font-size: 12px; color: var(--g200); line-height: 1.7; }
-
 .sub-lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--g600); margin-bottom: 5px; margin-top: 10px; }
 .sub-lbl:first-of-type { margin-top: 0; }
 
@@ -514,24 +457,26 @@ a { color: inherit; text-decoration: none; }
 
 .ql { list-style: none; display: flex; flex-direction: column; gap: 3px; }
 .ql li { font-size: 12px; color: var(--g600); font-style: italic; display: flex; gap: 8px; line-height: 1.5; }
-.ql li::before { content: '?'; color: var(--accent); font-style: normal; flex-shrink: 0; font-size: 11px; }
+.ql li::before { content: '—'; color: var(--g700); font-style: normal; flex-shrink: 0; }
 
 .rfb-ex { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--g800); border-radius: 2px; }
 .rfb-ex-lbl { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; opacity: 0.6; }
 .rfb-ex p { font-size: 12px; color: var(--g400); line-height: 1.6; }
 
-/* Early Builder Examples */
+/* Research */
 .example-list { display: flex; flex-direction: column; }
 .example-item { border-top: 1px solid var(--g800); padding: 16px 0; }
 .example-item:first-child { border-top: none; padding-top: 0; }
 .example-header { display: flex; gap: 12px; margin-bottom: 8px; align-items: flex-start; }
 .example-n { font-size: 10px; color: var(--accent); min-width: 36px; padding-top: 2px; letter-spacing: 0.04em; flex-shrink: 0; }
 .example-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 3px; line-height: 1.4; }
+.example-title a { color: inherit; text-decoration: none; transition: color 0.1s; }
+.example-title a:hover { color: var(--accent); }
+.example-attr a { color: inherit; text-decoration: none; transition: color 0.1s; }
+.example-attr a:hover { color: var(--g200); }
 .example-attr { font-size: 11px; color: var(--g600); letter-spacing: 0.03em; }
 .example-body { padding-left: 48px; }
 .example-desc { font-size: 12px; color: var(--g400); line-height: 1.75; margin-bottom: 8px; }
-.example-link { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--g600); letter-spacing: 0.04em; transition: color 0.1s; text-decoration: none; }
-.example-link:hover { color: var(--accent); }
 
 /* Judging */
 .j-row { display: flex; gap: 16px; padding: 12px 0; border-top: 1px solid var(--g800); align-items: flex-start; }
@@ -557,17 +502,6 @@ a { color: inherit; text-decoration: none; }
 .res-link-desc { font-size: 11px; color: var(--g600); flex: 1; text-align: right; font-style: italic; }
 .res-link-arr { font-size: 10px; color: var(--g700); }
 
-/* CTA */
-.cta-wrap {
-  border-top: 1px solid var(--g800);
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 56px var(--pad);
-}
-.cta-lbl { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-.cta-title { font-size: clamp(28px, 4vw, 42px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; color: var(--white); margin-bottom: 10px; }
-.cta-sub { font-size: 13px; color: var(--g400); line-height: 1.7; max-width: 380px; margin-bottom: 22px; }
-.cta-fine { margin-top: 12px; font-size: 11px; color: var(--g700); letter-spacing: 0.04em; }
 
 /* Modal */
 .modal-overlay {
@@ -632,7 +566,7 @@ a { color: inherit; text-decoration: none; }
   .hero-divider-v { display: none; }
   .hero-right { margin-top: 24px; }
   .hero-title { font-size: 64px; }
-  .nav-links { display: none; }
+  .hide-mobile { display: none; }
   .section { grid-template-columns: 1fr; }
   .sec-label { border-right: none; border-bottom: 1px solid var(--g800); padding: 16px 0 8px; }
   .sec-body { padding: 16px 0; }
@@ -650,14 +584,15 @@ a { color: inherit; text-decoration: none; }
   <div class="nav-brand">
     <span>Canteen</span>
     <span class="nav-x">×</span>
-    <span class="nav-colosseum">Colosseum</span>
+    <a href="https://colosseum.com/frontier" target="_blank" class="nav-colosseum">Colosseum</a>
   </div>
   <div class="nav-right">
     <div class="nav-links">
-      <a href="#prizes">Prizes</a>
+      <a href="#prizes" class="hide-mobile">Prizes</a>
       <a href="#ideas">Ideas</a>
-      <a href="#judging">Judging</a>
-      <a href="#resources">Resources</a>
+      <a href="#examples" class="hide-mobile">Research</a>
+      <a href="#judging" class="hide-mobile">Judging</a>
+      <a href="#resources" class="hide-mobile">Resources</a>
     </div>
     <a href="#" class="nav-apply" onclick="openApplyModal(event)">Apply</a>
   </div>
@@ -673,7 +608,7 @@ a { color: inherit; text-decoration: none; }
     <div class="hero-left">
       <div class="hero-access">
         <div class="hero-access-dot"></div>
-        Priority Access · Colosseum Frontier
+        Priority Access · <a href="https://colosseum.com/frontier" target="_blank" style="color:inherit;text-decoration:none;">Colosseum Frontier</a>
       </div>
       <h1 class="hero-title">SWARM</h1>
       <p class="hero-tagline">
@@ -681,7 +616,7 @@ a { color: inherit; text-decoration: none; }
         $25,000 in additional prizes, dedicated mentorship,
         and direct access to Canteen's network.
       </p>
-      <p class="hero-selected">Selected builders only.</p>
+      <p class="hero-selected">Selective cohort · Apply to join.</p>
       <div class="hero-ctas">
         <a href="#" class="btn-primary" onclick="openApplyModal(event)">Request access →</a>
         <a href="https://discord.gg/NDgvUzFqBY" target="_blank" class="btn-outline">Join Discord ↗</a>
@@ -707,13 +642,13 @@ a { color: inherit; text-decoration: none; }
         </div>
         <div class="meta-cell">
           <div class="meta-key">Access</div>
-          <div class="meta-val">Invite only</div>
+          <div class="meta-val">Apply to join</div>
         </div>
       </div>
 
 <div class="canteen-card">
         <div class="canteen-header">
-          <div class="canteen-mark">C</div>
+          <div class="canteen-mark"><img src="canteen-logo.png" alt="Canteen"></div>
           <div>
             <div class="canteen-name">Canteen</div>
             <div class="canteen-sub">Research &amp; Technology · New York City</div>
@@ -722,55 +657,11 @@ a { color: inherit; text-decoration: none; }
         <div class="canteen-desc">
           Canteen is a research and technology firm at the intersection of <strong>AI, crypto, and payments</strong>. We publish the research, run the experiments, and back the builders doing the same.
         </div>
-        <div class="canteen-swarm">
-          SWARM is the program we built for the builders we most want to see succeed.
-        </div>
       </div>
     </div>
   </div>
 
-  <!-- STATUS BAR -->
-  <div class="hero-bottom">
-    <div class="hero-bottom-left">
-      <span style="color:var(--accent);font-size:10px;letter-spacing:0.1em;">● LIVE</span>
-      <span>Colosseum Frontier Hackathon</span>
-      <span style="color:var(--g700)">Apr 6 – May 11, 2026</span>
-    </div>
-    <div class="hero-bottom-right">
-      <a href="#prizes">Prizes</a>
-      <a href="#ideas">Ideas</a>
-      <a href="#judging">Judging</a>
-      <a href="#apply">Apply</a>
-      <div class="scroll-hint">↓</div>
-    </div>
-  </div>
 </section>
-
-<!-- TICKER -->
-<div class="ticker-bar">
-  <div class="ticker-inner">
-    <span class="ticker-item accent">SWARM</span>
-    <span class="ticker-item">Agent Discovery &amp; Reputation Networks</span>
-    <span class="ticker-item">Real-Time Agent Coordination</span>
-    <span class="ticker-item">Agent Attention Markets</span>
-    <span class="ticker-item">Emergent Agent Economies</span>
-    <span class="ticker-item">Multi-Agent Orchestration</span>
-    <span class="ticker-item accent">$25,000 in prizes</span>
-    <span class="ticker-item">Apr 6 – May 11 · Online</span>
-    <span class="ticker-item">Canteen × Colosseum Frontier</span>
-    <span class="ticker-item accent">Invite only</span>
-    <span class="ticker-item">SWARM</span>
-    <span class="ticker-item">Agent Discovery &amp; Reputation Networks</span>
-    <span class="ticker-item">Real-Time Agent Coordination</span>
-    <span class="ticker-item">Agent Attention Markets</span>
-    <span class="ticker-item">Emergent Agent Economies</span>
-    <span class="ticker-item">Multi-Agent Orchestration</span>
-    <span class="ticker-item accent">$25,000 in prizes</span>
-    <span class="ticker-item">Apr 6 – May 11 · Online</span>
-    <span class="ticker-item">Canteen × Colosseum Frontier</span>
-    <span class="ticker-item accent">Invite only</span>
-  </div>
-</div>
 
 <!-- PRIZES -->
 <div class="section" id="prizes">
@@ -781,10 +672,10 @@ a { color: inherit; text-decoration: none; }
   <div class="sec-body">
     <div class="prize-row">
       <div class="prize-num">$250k</div>
-      <div class="prize-lbl">in follow-on support from Colosseum's venture fund</div>
+      <div class="prize-lbl">in follow-on support from <a href="https://colosseum.com/" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Colosseum</a>'s venture fund</div>
     </div>
     <p class="prize-desc">
-      These investments are offered by Colosseum's Frontier and in addition to SWARM.
+      These investments are offered by <a href="https://colosseum.com/frontier" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Colosseum's Frontier</a> and in addition to SWARM.
       The best projects compete for both.
     </p>
     <div class="perk-list">
@@ -829,17 +720,17 @@ a { color: inherit; text-decoration: none; }
   </div>
   <div class="sec-body">
     <div class="pass-grid">
-      <div class="pass-col">
+      <a href="https://colosseum.com/frontier" target="_blank" class="pass-col" style="text-decoration:none;display:block;transition:opacity 0.1s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
         <div class="pass-lbl">The hackathon</div>
         <div class="pass-title">Colosseum Frontier</div>
         <p class="pass-body">Colosseum's flagship hackathon. Thousands of builders competing for serious prizes and an accelerator pipeline that has launched some of the most important companies in the Solana ecosystem.</p>
         <div class="pass-foot">All SWARM builders compete in Frontier</div>
-      </div>
+      </a>
       <div class="pass-col">
         <div class="pass-lbl">Your priority pass</div>
         <div class="pass-title">SWARM</div>
         <p class="pass-body">Canteen's program running alongside Frontier. Selected builders get $25,000 in additional prizes, dedicated mentorship, and Canteen's full research and founder network.</p>
-        <div class="pass-foot">Selected by invitation · Apply below</div>
+        <div class="pass-foot">Selective cohort · Apply below</div>
       </div>
     </div>
   </div>
@@ -848,7 +739,7 @@ a { color: inherit; text-decoration: none; }
 <!-- RFBs -->
 <div class="section" id="ideas">
   <div class="sec-label">
-    <div class="sec-label-text">Problem<br>Space</div>
+    <div class="sec-label-text">Ideas</div>
     <div class="sec-label-num">03</div>
   </div>
   <div class="sec-body">
@@ -863,7 +754,6 @@ a { color: inherit; text-decoration: none; }
           </div>
         </div>
         <div class="rfb-body">
-          <div class="rfb-problem">Your AI agent offers a service — trading signals, design work, analysis. How do other agents find you and decide to trust you?</div>
           <div class="sub-lbl">What builders create</div>
           <ul class="bl">
             <li>Agent marketplaces with reputation and ranking algorithms</li>
@@ -898,7 +788,6 @@ a { color: inherit; text-decoration: none; }
           </div>
         </div>
         <div class="rfb-body">
-          <div class="rfb-problem">Multiple agents need to coordinate in real-time — voice agents negotiating, live auctions, streaming services. Solana's 400ms blocks make this possible. Build the interfaces.</div>
           <div class="sub-lbl">What builders create</div>
           <ul class="bl">
             <li>Voice agents that negotiate deals with other voice agents</li>
@@ -931,7 +820,6 @@ a { color: inherit; text-decoration: none; }
           </div>
         </div>
         <div class="rfb-body">
-          <div class="rfb-problem">You are a startup selling to agents. How do you get their attention? Traditional marketing does not work on AI. This is a completely unsolved problem.</div>
           <div class="sub-lbl">What builders create</div>
           <ul class="bl">
             <li>Agent advertising platforms where agents pay to promote to other agents</li>
@@ -965,7 +853,6 @@ a { color: inherit; text-decoration: none; }
           </div>
         </div>
         <div class="rfb-body">
-          <div class="rfb-problem">What happens when hundreds of agents with different goals interact on the same network? Can we observe emergent behaviors, and build tools to study them?</div>
           <div class="sub-lbl">What builders create</div>
           <ul class="bl">
             <li>Agent simulation environments with real money on Solana</li>
@@ -999,7 +886,6 @@ a { color: inherit; text-decoration: none; }
           </div>
         </div>
         <div class="rfb-body">
-          <div class="rfb-problem">Complex tasks require multiple agents working together in real-time. How do they coordinate, communicate, and split payment fairly?</div>
           <div class="sub-lbl">What builders create</div>
           <ul class="bl">
             <li>Multi-agent coordination protocols inspired by workflow orchestration</li>
@@ -1031,24 +917,23 @@ a { color: inherit; text-decoration: none; }
 <!-- EARLY BUILDER EXAMPLES -->
 <div class="section" id="examples">
   <div class="sec-label">
-    <div class="sec-label-text">Early<br>Builder<br>Examples</div>
+    <div class="sec-label-text">Research</div>
     <div class="sec-label-num">04</div>
   </div>
   <div class="sec-body">
-    <p class="rfb-intro">Research that points directly to buildable products. Starting points, not prescriptions.</p>
+    <p class="rfb-intro">Research that points directly to buildable products. <a href="https://thecanteenapp.com/analysis/2026/03/27/multi-agent-landscape.html" target="_blank">Read more about our take on mass agent networks here.</a></p>
     <div class="example-list">
 
       <div class="example-item">
         <div class="example-header">
           <div class="example-n">01</div>
           <div>
-            <div class="example-title">Debate Primitives for Multi-Agent LLM Collaboration</div>
-            <div class="example-attr">Li et al., 2025 · UW-Madison</div>
+            <div class="example-title"><a href="https://github.com/deeplearning-wisc/debate-or-vote" target="_blank">Debate Primitives for Multi-Agent LLM Collaboration</a></div>
+            <div class="example-attr"><a href="https://github.com/deeplearning-wisc/debate-or-vote" target="_blank">Li et al., 2025 · UW-Madison</a></div>
           </div>
         </div>
         <div class="example-body">
           <p class="example-desc">Li's work gives us a concrete design question: when should a swarm deliberate vs. aggregate? The hack here is building that decision as an on-chain primitive — the mechanism selector (debate or vote) lives in a smart contract, debate transcripts are hashed and stored as receipts, and payment releases only after the chosen mechanism reaches quorum. This turns a research finding into auditable, trust-minimized coordination infrastructure. The interesting product wedge is selling it to agent runtime providers (e.g. LangGraph, CrewAI) as a drop-in arbitration layer.</p>
-          <a href="https://github.com/deeplearning-wisc/debate-or-vote" target="_blank" class="example-link">Research repo ↗</a>
         </div>
       </div>
 
@@ -1056,13 +941,12 @@ a { color: inherit; text-decoration: none; }
         <div class="example-header">
           <div class="example-n">02</div>
           <div>
-            <div class="example-title">TurboQuant KV Cache as Agent Memory</div>
-            <div class="example-attr">Zandieh &amp; Mirrokni · Google Research · 2026</div>
+            <div class="example-title"><a href="https://arxiv.org/abs/2504.19874" target="_blank">TurboQuant KV Cache as Agent Memory</a></div>
+            <div class="example-attr"><a href="https://arxiv.org/abs/2504.19874" target="_blank">Zandieh &amp; Mirrokni · Google Research · 2026</a></div>
           </div>
         </div>
         <div class="example-body">
           <p class="example-desc">Extreme KV cache compression may enable agent memory to be stored onchain for the first time. This would give agents verifiable, persistent memory that survives across sessions and providers — no single inference provider controls the memory state. The hack is a PoC that snapshots a compressed KV cache (using TurboQuant's technique) at the end of each agent session, pins it to Arweave/Filecoin with a hash on Solana, and rehydrates it at session start. If retrieval quality holds up at extreme compression ratios, this is the missing piece for truly persistent agent identity.</p>
-          <a href="https://arxiv.org/abs/2504.19874" target="_blank" class="example-link">Research paper ↗</a>
         </div>
       </div>
 
@@ -1070,13 +954,12 @@ a { color: inherit; text-decoration: none; }
         <div class="example-header">
           <div class="example-n">03</div>
           <div>
-            <div class="example-title">Craftium On-Chain via Rust Game Engine</div>
-            <div class="example-attr">Mikelma et al. · ICML 2025</div>
+            <div class="example-title"><a href="https://github.com/mikelma/craftium" target="_blank">Craftium On-Chain via Rust Game Engine</a></div>
+            <div class="example-attr"><a href="https://github.com/mikelma/craftium" target="_blank">Mikelma et al. · ICML 2025</a></div>
           </div>
         </div>
         <div class="example-body">
           <p class="example-desc">Craftium provides a Minecraft-based framework for building diverse multi-agent environments in a composable way. Can we rewrite the environment core in a Rust-based game engine (Bevy is the obvious choice given its ECS architecture and WASM compilation target)? This creates a permissionless arena for agent training and evaluation.</p>
-          <a href="https://github.com/mikelma/craftium" target="_blank" class="example-link">Research repo ↗</a>
         </div>
       </div>
 
@@ -1084,13 +967,12 @@ a { color: inherit; text-decoration: none; }
         <div class="example-header">
           <div class="example-n">04</div>
           <div>
-            <div class="example-title">MiroFish as a Prediction Market Oracle</div>
-            <div class="example-attr">OASIS + Manifold/Polymarket</div>
+            <div class="example-title"><a href="https://github.com/camel-ai/oasis" target="_blank">MiroFish as a Prediction Market Oracle</a></div>
+            <div class="example-attr"><a href="https://github.com/camel-ai/oasis" target="_blank">OASIS + Manifold/Polymarket</a></div>
           </div>
         </div>
         <div class="example-body">
           <p class="example-desc">OASIS simulates one million agents reacting to a seed event. MiroFish wraps this into a structured report. The gap: there's no way to bet on whether the simulation is right. The hack is to wire MiroFish's output — e.g. "68% of simulated agents react negatively to this policy in 72 hours" — into a prediction market where the resolution criterion is measured real-world sentiment (X API, Farcaster, Reddit). The simulation run is committed on-chain before the real-world event unfolds, making it tamper-evident. The interesting research question OASIS itself raises: at what agent-count threshold does the simulation's predicted sentiment distribution start matching real observed distributions? You'd have ground truth data to actually answer this.</p>
-          <a href="https://github.com/camel-ai/oasis" target="_blank" class="example-link">Research repo ↗</a>
         </div>
       </div>
 
@@ -1098,13 +980,12 @@ a { color: inherit; text-decoration: none; }
         <div class="example-header">
           <div class="example-n">05</div>
           <div>
-            <div class="example-title">zkVM Verifiable Simulation Replays via MiroFish Architecture</div>
-            <div class="example-attr">MiroFish</div>
+            <div class="example-title"><a href="https://github.com/666ghj/MiroFish" target="_blank">zkVM Verifiable Simulation Replays via MiroFish Architecture</a></div>
+            <div class="example-attr"><a href="https://github.com/666ghj/MiroFish" target="_blank">MiroFish</a></div>
           </div>
         </div>
         <div class="example-body">
           <p class="example-desc">MiroFish runs "dual-platform parallel" simulations — agents act across two synthetic social platforms simultaneously. This is a natural structure for zkVM-verifiable replays: run the simulation once, generate a proof that the reported emergent behaviors follow deterministically from the initial graph state and the model weights used. Builders could then ship simulation results to clients who verify the proof without re-running the full simulation. The practical bottleneck is that LLM inference isn't cheaply provable today — but MiroFish-Offline's Ollama backend with a quantized local model (qwen2.5 at 4-bit) is small enough that zkML proof generation becomes at least tractable for short simulation windows.</p>
-          <a href="https://github.com/666ghj/MiroFish" target="_blank" class="example-link">Research repo ↗</a>
         </div>
       </div>
 
@@ -1119,6 +1000,7 @@ a { color: inherit; text-decoration: none; }
     <div class="sec-label-num">05</div>
   </div>
   <div class="sec-body">
+    <p style="font-size:12px;color:var(--g600);line-height:1.7;margin-bottom:20px;">These weightings are recommendations. Our judges have the final say, and the best projects tend to break all the rules.</p>
     <div class="j-row">
       <div class="j-pct">40%</div>
       <div>
@@ -1189,14 +1071,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </div>
 
-<!-- CTA -->
-<div class="cta-wrap" id="apply">
-  <div class="cta-lbl">Request access</div>
-  <h2 class="cta-title">Your priority pass<br>to the arena.</h2>
-  <p class="cta-sub">SWARM is selected by invitation. Tell us what you are building and why the agent economy needs it.</p>
-  <a href="#" class="btn-primary" onclick="openApplyModal(event)">Apply on Luma →</a>
-  <div class="cta-fine">Apr 6 – May 11, 2026 · Online · In partnership with Colosseum</div>
-</div>
 
 <!-- FOOTER -->
 <div class="footer">
